@@ -1,6 +1,5 @@
 package com.aj.carserviceticketing.domain.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,7 +33,6 @@ public class AppUser extends BaseEntity {
     private String username;
 
     @Column(name = "password")
-    @JsonIgnore
     private String password;
 
     @javax.validation.constraints.Email
