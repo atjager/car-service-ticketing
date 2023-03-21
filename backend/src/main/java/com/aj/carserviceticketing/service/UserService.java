@@ -1,6 +1,6 @@
 package com.aj.carserviceticketing.service;
 
-import com.aj.carserviceticketing.domain.AppUser;
+import com.aj.carserviceticketing.domain.users.AppUser;
 import com.aj.carserviceticketing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

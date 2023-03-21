@@ -1,6 +1,6 @@
 package com.aj.carserviceticketing.controller;
 
-import com.aj.carserviceticketing.domain.AppUser;
+import com.aj.carserviceticketing.domain.users.AppUser;
 import com.aj.carserviceticketing.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

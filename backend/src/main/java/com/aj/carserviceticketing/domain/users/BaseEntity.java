@@ -1,4 +1,4 @@
-package com.aj.carserviceticketing.domain;
+package com.aj.carserviceticketing.domain.users;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

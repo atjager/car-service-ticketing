@@ -1,4 +1,4 @@
-package com.aj.carserviceticketing.domain;
+package com.aj.carserviceticketing.domain.users;
 
 public enum Role {
     ADMIN,

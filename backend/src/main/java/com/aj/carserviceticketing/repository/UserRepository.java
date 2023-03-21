@@ -1,6 +1,6 @@
 package com.aj.carserviceticketing.repository;
 
-import com.aj.carserviceticketing.domain.AppUser;
+import com.aj.carserviceticketing.domain.users.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
