@@ -22,7 +22,6 @@ public abstract class BaseEntity implements Serializable {
     @PrePersist
     protected void onCreate() {
         updated = created = new Date();
-        System.out.println("--------------------------------------------HALOooooooooo");
     }
 
     @PreUpdate
