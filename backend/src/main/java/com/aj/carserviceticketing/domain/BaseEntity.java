@@ -1,4 +1,4 @@
-package com.aj.carserviceticketing.domain.users;
+package com.aj.carserviceticketing.domain;
 
 
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @MappedSuperclass
-abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created", nullable = false)

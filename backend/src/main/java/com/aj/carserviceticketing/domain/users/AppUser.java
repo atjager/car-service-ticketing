@@ -1,5 +1,6 @@
 package com.aj.carserviceticketing.domain.users;
 
+import com.aj.carserviceticketing.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
