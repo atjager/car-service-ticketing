@@ -25,16 +25,15 @@ public class UserService {
         return userRepository.save(userToSave);
     }
 
-    public List<AppUser> findAllUsers() {
+    public List<AppUser> findAll() {
         return userRepository.findAll();
     }
 
-    public AppUser updateAppUser(AppUser appUser) {
-        System.out.println(appUser);
+    public AppUser update(AppUser appUser) {
+        //System.out.println(appUser);
         AppUser appUserOld = userRepository.findById(appUser.getId()).get();
         appUser.setId(appUserOld.getId());
         appUser.setCreated(appUserOld.getCreated());
-        userRepository.save(appUser);
-        return appUser;
+        return userRepository.save(appUser);
     }
 }
