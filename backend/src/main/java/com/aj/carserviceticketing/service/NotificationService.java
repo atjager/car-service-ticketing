@@ -14,22 +14,22 @@ import java.util.Properties;
 public class NotificationService {
 
     @Value("${email.address}")
-    private final String username;
+    private String username;
 
     @Value("${email.password}")
-    private final String password;
+    private String password;
 
     @Value("${mail.smtp.host}")
-    private final String host;
+    private String host;
 
     @Value("${mail.smtp.port}")
-    private final String port;
+    private String port;
 
     @Value("${mail.smtp.auth}")
-    private final String auth;
+    private String auth;
 
     @Value("${mail.smtp.starttls.enable}")
-    private final String starttls;
+    private String starttls;
 
     public void send(String emailAddress, String subject, String msg) {
 
