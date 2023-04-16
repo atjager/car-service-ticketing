@@ -6,8 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -18,9 +20,9 @@ import javax.validation.constraints.NotNull;
 public class AppUser extends BaseEntity {
 
     @Id
-    @Column(nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    @GeneratedValue
+    @UuidGenerator
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
