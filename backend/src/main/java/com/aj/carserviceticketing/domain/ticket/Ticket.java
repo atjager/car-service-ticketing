@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
@@ -34,5 +35,10 @@ public class Ticket extends BaseEntity {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    @NotNull(message = "Ticket status must be specified.")
+    private TicketStatus status;
 
 }
