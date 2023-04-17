@@ -16,18 +16,18 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("create")
-    private AppUser createCustomer(@RequestBody AppUser appUser) {
+    private AppUser createUser(@RequestBody AppUser appUser) {
         System.out.println(appUser);
         return userService.create(appUser);
     }
 
     @GetMapping("all")
-    private List<AppUser> getAllCustomer() {
+    private List<AppUser> getAllUser() {
         return userService.findAll();
     }
 
     @PutMapping("update")
-    private AppUser updateCustomer(@RequestBody AppUser appUser) {
+    private AppUser updateUser(@RequestBody AppUser appUser) {
         return userService.update(appUser);
     }
 
