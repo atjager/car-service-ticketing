@@ -1,50 +1,49 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-app-bar
+        app
+        color="blue-grey lighten-2"
+        dense
+        elevation="3"
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+    >
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title style="font-family: 'Arial Black'; font-size: 40px">Car service ticketing</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+
     </v-app-bar>
 
-    <v-main>
-      <router-view />
+    <sidebar :drawer="drawer" @close-drawer="drawer = false"></sidebar>
+
+    <v-main style="border: 0px solid red; position: absolute; top:48px; bottom: 48px; left:20px; right: 20px;">
+      <router-view/>
     </v-main>
+    <v-footer padless fixed color="white">
+      <v-col
+          class="text-center"
+          cols="12"
+      >
+        {{ new Date().getFullYear() }} — <strong>Car service ticketing</strong>
+      </v-col>
+    </v-footer>
+
   </v-app>
 </template>
 
 <script>
-export default {
-  name: "App",
+import sidebar from "@/components/Sidebar";
 
+
+export default {
+  name: 'App',
+  components: {
+    sidebar
+  },
   data: () => ({
-    //
+    drawer: false
   }),
 };
 </script>

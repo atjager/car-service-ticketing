@@ -30,4 +30,9 @@ public class UserController {
     private AppUser updateCustomer(@RequestBody AppUser appUser) {
         return userService.update(appUser);
     }
+
+    @DeleteMapping("delete")
+    private void deleteUser(@RequestParam String id) {
+        userService.delete(id);
+    }
 }

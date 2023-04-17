@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +36,9 @@ public class UserService {
         appUser.setId(appUserOld.getId());
         appUser.setCreated(appUserOld.getCreated());
         return userRepository.save(appUser);
+    }
+
+    public void delete(String id) {
+        userRepository.delete(userRepository.findById(UUID.fromString(id)).get());
     }
 }
