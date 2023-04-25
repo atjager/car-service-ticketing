@@ -1,6 +1,11 @@
 <template>
   <div class="users">
-  <user-table style="margin-bottom: 50px"></user-table>
+    <v-alert
+        type="success"
+        v-show="isSuccess"
+    >{{ successMsg }}
+    </v-alert>
+    <user-table style="margin-bottom: 50px"></user-table>
   </div>
 </template>
 
@@ -18,6 +23,22 @@ export default {
       successMsg: '',
       isSuccess: false,
     }
+  },
+  methods: {
+    init() {
+      console.log(this.$cookies.get("success"))
+      if (this.$cookies.get("success")) {
+        this.isSuccess = true
+        this.successMsg = 'User successfully added'
+      }
+    }
+  },
+  mounted() {
+    this.init()
+  },
+  created() {
+    setTimeout(() =>
+        this.isSuccess = false, 3000)
   },
 }
 </script>
