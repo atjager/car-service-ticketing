@@ -11,7 +11,7 @@
               label="Name"
               required
               style="max-width: 300px"
-              :rules="userNameRules"
+              :rules="fieldRules"
           ></v-text-field>
 
           <v-text-field
@@ -19,7 +19,7 @@
               label="User name"
               required
               style="max-width: 300px"
-              :rules="userNameRules"
+              :rules="fieldRules"
           ></v-text-field>
 
           <v-text-field
@@ -80,9 +80,9 @@ export default {
       }
       return rules
     },
-    userNameRules() {
+    fieldRules() {
       const rules = []
-      const rule = v => !!v || 'Name is required'
+      const rule = v => !!v || 'This field is required'
       rules.push(rule)
       return rules
     },
