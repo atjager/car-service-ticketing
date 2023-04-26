@@ -21,7 +21,7 @@
         <v-dialog v-model="dialogDelete" max-width="500px">
           <template v-slot:activator="{  }">
             <v-btn
-                color="teal"
+                color="blue"
                 dark
                 class="mb-2"
                 @click="$router.push('/add-new-user')"
