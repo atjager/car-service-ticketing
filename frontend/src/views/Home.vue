@@ -48,16 +48,19 @@
 </template>
 
 <script>
-import usersPic from '@/assets/users.jpg'
+import usersPic from '@/assets/users.png'
+import customerPic from '@/assets/customers.jpg'
+import ticketsPic from '@/assets/tickets.png'
+import settingsPic from '@/assets/settings.png'
 
 export default {
   data() {
     return {
       cards: [
         {title: 'Users', src: usersPic, flex: 6, url: '/users', text: 'Application users'},
-        { title: 'Customers', src: usersPic, flex: 6, url: '/customers', text: 'List of our customers'},
-        {title: 'Tickets', src: usersPic, flex: 6, url: '/tickets', text: 'List of open tickets'},
-        {title: 'Settings', src: usersPic, flex: 6, url: '/settings', text: 'Application preferences'},
+        { title: 'Customers', src: customerPic, flex: 6, url: '/customers', text: 'List of our customers'},
+        {title: 'Tickets', src: ticketsPic, flex: 6, url: '/tickets', text: 'List of open tickets'},
+        {title: 'Settings', src: settingsPic, flex: 6, url: '/settings', text: 'Application preferences'},
       ],
     }
   },
