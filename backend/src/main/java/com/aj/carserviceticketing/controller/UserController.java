@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.controller;
 
 import com.aj.carserviceticketing.domain.users.AppUser;
+import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
 import com.aj.carserviceticketing.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("create")
-    private AppUser createUser(@RequestBody AppUser appUser) {
+    private AppUser createUser(@RequestBody AppUser appUser) throws ItemAlreadyExistsException {
         System.out.println(appUser);
         return userService.create(appUser);
     }

@@ -9,7 +9,7 @@
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title style="font-family: 'Arial Black'; font-size: 40px">Car service ticketing</v-toolbar-title>
+      <v-toolbar-title @click="$router.push('/')" style="font-family: 'Arial Black'; font-size: 40px;  user-select: none;">Car service ticketing</v-toolbar-title>
 
       <v-spacer></v-spacer>
 

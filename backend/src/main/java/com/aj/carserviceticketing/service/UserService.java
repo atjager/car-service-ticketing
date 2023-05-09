@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.service;
 
 import com.aj.carserviceticketing.domain.users.AppUser;
+import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
 import com.aj.carserviceticketing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,10 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public AppUser create(AppUser appUser) {
+    public AppUser create(AppUser appUser) throws ItemAlreadyExistsException {
+        if (userRepository.findByUsername(appUser.getUsername()).isPresent() || userRepository.findByEmail(appUser.getEmail()).isPresent()) {
+            throw new ItemAlreadyExistsException("", "");
+        }
         AppUser userToSave = AppUser.builder()
                 .username(appUser.getUsername())
                 .email(appUser.getEmail())

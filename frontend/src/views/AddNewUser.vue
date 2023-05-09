@@ -1,5 +1,9 @@
 <template>
   <div>
+    <v-alert
+        type="warning"
+        v-show="isWarning"
+    >{{ warningMsg }}</v-alert>
     <v-row>
       <div class="col-md-6">
         <v-form
@@ -67,6 +71,8 @@ export default {
       email: '',
       formModel: '',
       emailRuleBool: false,
+      isWarning: false,
+      warningMsg: "Username or password already exists"
     }
   },
   computed: {
@@ -116,7 +122,7 @@ export default {
           }, err => {
             if (err.response.status == 409) {
               this.userExists()
-              this.userNameRuleBool = true;
+              //this.userNameRuleBool = true;
               setTimeout(() =>
                   this.$refs.form.validate(), 200)
             }
@@ -130,7 +136,7 @@ export default {
     userExists() {
       this.isWarning = true;
       setTimeout(() =>
-          this.isWarning = false, 2000)
+          this.isWarning = false, 4000)
     },
 
     validateEmail() {

@@ -26,10 +26,9 @@ export default {
   },
   methods: {
     init() {
-      console.log(this.$cookies.get("success"))
       if (this.$cookies.get("success")) {
         this.isSuccess = true
-        this.successMsg = 'User successfully added'
+        this.successMsg = 'User successfully added, confirmation email sent to the given address.'
       }
     }
   },

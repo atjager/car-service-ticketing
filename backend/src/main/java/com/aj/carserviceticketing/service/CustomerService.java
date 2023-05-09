@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,4 +28,7 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public void delete(String id) {
+        customerRepository.delete(customerRepository.findById(UUID.fromString(id)).get());
+    }
 }
