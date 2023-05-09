@@ -16,8 +16,8 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     public Customer create(Customer customer) throws ItemAlreadyExistsException {
-        if(customerRepository.findByEmail(customer.getEmail()).isPresent() || customerRepository.findByPhone(customer.getPhone()).isPresent()) {
-            throw new ItemAlreadyExistsException("","");
+        if (customerRepository.findByEmail(customer.getEmail()).isPresent() || customerRepository.findByPhone(customer.getPhone()).isPresent()) {
+            throw new ItemAlreadyExistsException("", "");
         }
         return customerRepository.save(customer);
     }
