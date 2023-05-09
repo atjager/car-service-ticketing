@@ -34,7 +34,7 @@
               :rules="phoneRules"
           ></v-text-field>
 
-          <v-btn @click="saveUser" color="blue" dark>Save</v-btn>
+          <v-btn @click="saveCustomer" color="blue" dark>Save</v-btn>
           <v-btn style="margin-left: 20px" color="grey" @click="$router.push('/customers')" dark>Cancel
           </v-btn>
 
@@ -102,7 +102,7 @@ export default {
       this.$refs.form.validate()
     },
 
-    saveUser() {
+    saveCustomer() {
       this.emailRuleBool = true
       this.phoneRuleBool = true
       this.$refs.form.validate()
@@ -121,8 +121,7 @@ export default {
             }
           }, err => {
             if (err.response.status == 409) {
-              this.userExists()
-              //this.userNameRuleBool = true;
+              this.customerExists()
               setTimeout(() =>
                   this.$refs.form.validate(), 200)
             }
@@ -133,7 +132,7 @@ export default {
     },
 
 
-    userExists() {
+    customerExists() {
       this.isWarning = true;
       setTimeout(() =>
           this.isWarning = false, 4000)

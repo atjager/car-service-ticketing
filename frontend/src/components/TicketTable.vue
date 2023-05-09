@@ -1,5 +1,18 @@
 <template>
+  <v-card>
+    <v-card-title>
+      Tickets
+      <v-spacer></v-spacer>
+      <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+      ></v-text-field>
+    </v-card-title>
   <v-data-table
+      :search="search"
       :headers="headers"
       :items="tickets"
       sort-by="name"
@@ -11,7 +24,7 @@
       <v-toolbar
           flat
       >
-        <v-toolbar-title>Tickets</v-toolbar-title>
+<!--        <v-toolbar-title>Tickets</v-toolbar-title>-->
         <v-divider
             class="mx-4"
             inset
@@ -45,6 +58,9 @@
     <template v-slot:item.created="{ item }">
       <p>{{ getTimestamp(item.created) }}</p>
     </template>
+    <template v-slot:item.updated="{ item }">
+      <p>{{ getTimestamp(item.updated) }}</p>
+    </template>
     <template v-slot:item.actions="{ item }">
       <v-icon
           small
@@ -65,6 +81,7 @@
       <div>No data available</div>
     </template>
   </v-data-table>
+  </v-card>
 </template>
 
 <script>
@@ -73,6 +90,7 @@ import {api} from "@/api";
 export default {
   name: "TicketTable",
   data: () => ({
+    search: '',
     idToDelete: '',
     dialogDelete: false,
     headers: [
@@ -84,6 +102,9 @@ export default {
       },
       {text: 'Description', value: 'description'},
       {text: 'Status', value: 'status'},
+      {text: 'Customer', value: 'customerId'},
+      {text: 'Created', value: 'created'},
+      {text: 'Updated', value: 'updated'},
       {text: 'Actions', value: 'actions', sortable: false},
     ],
     tickets: [],
