@@ -6,6 +6,7 @@ import Customers from "../views/Customers";
 import Users from "../views/Users";
 import Settings from "../views/Settings";
 import AddNewUser from "../views/AddNewUser";
+import AddNewCustomer from "@/views/AddNewCustomer";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/add-new-user",
     name: "Add new user",
     component: AddNewUser,
+  },
+  {
+    path: "/add-new-customer",
+    name: "Add new customer",
+    component: AddNewCustomer,
   },
 
 

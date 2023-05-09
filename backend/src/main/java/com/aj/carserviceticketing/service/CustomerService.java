@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.service;
 
 import com.aj.carserviceticketing.domain.customer.Customer;
+import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
 import com.aj.carserviceticketing.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,10 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public Customer create(Customer customer) {
+    public Customer create(Customer customer) throws ItemAlreadyExistsException {
+        if(customerRepository.findByEmail(customer.getEmail()).isPresent() || customerRepository.findByPhone(customer.getPhone()).isPresent()) {
+            throw new ItemAlreadyExistsException("","");
+        }
         return customerRepository.save(customer);
     }
 

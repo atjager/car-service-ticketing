@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.controller;
 
 import com.aj.carserviceticketing.domain.customer.Customer;
+import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
 import com.aj.carserviceticketing.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping("create")
-    private Customer createCustomer(@RequestBody Customer customer) {
+    private Customer createCustomer(@RequestBody Customer customer) throws ItemAlreadyExistsException {
         return customerService.create(customer);
     }
 
