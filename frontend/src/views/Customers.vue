@@ -14,7 +14,7 @@
 import CustomerTable from "@/components/CustomerTable";
 
 export default {
-  name: "Users",
+  name: "Customers",
 
   components: {
     CustomerTable,

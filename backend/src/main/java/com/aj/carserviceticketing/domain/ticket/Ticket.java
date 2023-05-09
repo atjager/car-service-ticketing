@@ -25,12 +25,12 @@ public class Ticket extends BaseEntity {
     private UUID id;
 
     @Column(name = "customerId")
-    private long customerId;
+    private String customerId;
 
     @Column(name = "userId")
-    private long userId;
+    private String userId;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "description", nullable = false)
