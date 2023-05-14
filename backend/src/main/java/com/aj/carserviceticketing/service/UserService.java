@@ -2,6 +2,7 @@ package com.aj.carserviceticketing.service;
 
 import com.aj.carserviceticketing.domain.users.AppUser;
 import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
+import com.aj.carserviceticketing.exception.ItemNotFoundException;
 import com.aj.carserviceticketing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class UserService {
                 .email(appUser.getEmail())
                 .role(appUser.getRole())
                 .name(appUser.getName())
+                .verified(false)
                 .build();
         return userRepository.save(userToSave);
     }
@@ -42,5 +44,15 @@ public class UserService {
 
     public void delete(String id) {
         userRepository.delete(userRepository.findById(UUID.fromString(id)).get());
+    }
+
+    public void verifyUser(String id) throws ItemNotFoundException {
+        if (userRepository.findById(UUID.fromString(id)).isPresent()) {
+            AppUser appUser = userRepository.findById(UUID.fromString(id)).get();
+            appUser.setVerified(true);
+            userRepository.save(appUser);
+        } else {
+            throw new ItemNotFoundException("", "");
+        }
     }
 }

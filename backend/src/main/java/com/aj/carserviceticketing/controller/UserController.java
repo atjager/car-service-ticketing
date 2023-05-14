@@ -2,10 +2,12 @@ package com.aj.carserviceticketing.controller;
 
 import com.aj.carserviceticketing.domain.users.AppUser;
 import com.aj.carserviceticketing.exception.ItemAlreadyExistsException;
+import com.aj.carserviceticketing.exception.ItemNotFoundException;
 import com.aj.carserviceticketing.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @CrossOrigin
@@ -35,5 +37,10 @@ public class UserController {
     @DeleteMapping("delete")
     private void deleteUser(@RequestParam String id) {
         userService.delete(id);
+    }
+
+    @GetMapping("{id}")
+    private void verifyUser(@NotNull @PathVariable String id) throws ItemNotFoundException {
+        userService.verifyUser(id);
     }
 }

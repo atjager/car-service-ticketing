@@ -11,7 +11,7 @@ import java.util.Properties;
 
 @Service
 @RequiredArgsConstructor
-public class NotificationService {
+public class EmailSenderService {
 
     @Value("${email.address}")
     private String username;

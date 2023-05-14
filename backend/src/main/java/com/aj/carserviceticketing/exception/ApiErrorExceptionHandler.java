@@ -33,6 +33,12 @@ public class ApiErrorExceptionHandler {
         return new ResponseEntity<>(new Error("validationError", errorMessage.toString()), HttpStatus.BAD_REQUEST);
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<Error> handleApiErrorException404(ItemNotFoundException exc) {
+        return error(exc);
+    }
+
     private ResponseEntity<Error> error(ApiErrorException exc) {
         return new ResponseEntity<>(new Error(exc.getErrorName(), exc.getErrorMessage()), exc.getHttpStatus());
     }
