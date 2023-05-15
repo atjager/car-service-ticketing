@@ -52,7 +52,7 @@ public class UserService {
     public void verifyUser(String id) throws ItemNotFoundException, ItemAlreadyExistsException {
         if (userRepository.findById(UUID.fromString(id)).isPresent()) {
             AppUser appUser = userRepository.findById(UUID.fromString(id)).get();
-            if(appUser.getVerified()) {
+            if (appUser.getVerified()) {
                 throw new ItemAlreadyExistsException("", "");
             }
             appUser.setVerified(true);
