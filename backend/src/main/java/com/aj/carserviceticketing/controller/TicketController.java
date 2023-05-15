@@ -35,5 +35,10 @@ public class TicketController {
         ticketService.deleteTicket(id);
     }
 
+    @GetMapping("{id}")
+    private Ticket getTicket(@PathVariable String id) {
+        return ticketService.getTicketById(id);
+    }
+
 
 }

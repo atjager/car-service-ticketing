@@ -61,4 +61,8 @@ public class UserService {
             throw new ItemNotFoundException("", "");
         }
     }
+
+    public AppUser getUserById(String id) {
+        return userRepository.findById(UUID.fromString(id)).get();
+    }
 }

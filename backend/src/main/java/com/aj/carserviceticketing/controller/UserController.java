@@ -39,8 +39,13 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("verify/{id}")
     private void verifyUser(@NotNull @PathVariable String id) throws ItemNotFoundException, ItemAlreadyExistsException {
         userService.verifyUser(id);
+    }
+
+    @GetMapping("{id}")
+    private AppUser getUser(@NotNull @PathVariable String id) {
+        return userService.getUserById(id);
     }
 }

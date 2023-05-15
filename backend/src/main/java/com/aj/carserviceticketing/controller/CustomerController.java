@@ -35,4 +35,9 @@ public class CustomerController {
     private void deleteCustomer(@RequestParam String id) {
         customerService.delete(id);
     }
+
+    @GetMapping("{id}")
+    private Customer getCustomer(@PathVariable String id) {
+        return customerService.getCustomerById(id);
+    }
 }

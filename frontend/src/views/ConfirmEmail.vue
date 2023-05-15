@@ -21,7 +21,7 @@ export default {
       // const urlSections = this.$route.fullPath.split("/");
       // console.log(urlSections)
       let id = this.$route.params.id
-      api.get("user/" + id).then(r => {
+      api.get("user/verify/" + id).then(r => {
             if (r.status === 200) {
               this.confirmedMsg = "Email address successfully confirmed."
             }

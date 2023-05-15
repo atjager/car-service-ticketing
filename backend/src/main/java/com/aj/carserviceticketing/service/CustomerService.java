@@ -35,4 +35,8 @@ public class CustomerService {
     public void delete(String id) {
         customerRepository.delete(customerRepository.findById(UUID.fromString(id)).get());
     }
+
+    public Customer getCustomerById(String id) {
+        return customerRepository.findById(UUID.fromString(id)).get();
+    }
 }
