@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    private void verifyUser(@NotNull @PathVariable String id) throws ItemNotFoundException {
+    private void verifyUser(@NotNull @PathVariable String id) throws ItemNotFoundException, ItemAlreadyExistsException {
         userService.verifyUser(id);
     }
 }

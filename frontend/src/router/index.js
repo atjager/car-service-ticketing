@@ -8,6 +8,7 @@ import Settings from "../views/Settings";
 import AddNewUser from "../views/AddNewUser";
 import AddNewCustomer from "@/views/AddNewCustomer";
 import AddNewTicket from "@/views/AddNewTicket";
+import ConfirmEmail from "@/views/ConfirmEmail";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
     path: "/add-new-ticket",
     name: "Add new ticket",
     component: AddNewTicket,
+  },
+  {
+    path: "/confirm-email/:id",
+    name: "Confirm email",
+    component: ConfirmEmail,
   },
 
 

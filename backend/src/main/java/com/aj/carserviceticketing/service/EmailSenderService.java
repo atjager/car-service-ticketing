@@ -31,6 +31,13 @@ public class EmailSenderService {
     @Value("${mail.smtp.starttls.enable}")
     private String starttls;
 
+    public void sendVerifyRequest(String emailAddress, String id) {
+        String msg = "Please click on this link, to confirm your email address:"
+                + "http://localhost:8081/confirm-email/" + id;
+        String subject = "Your email address must be confirmed";
+        send(emailAddress, subject, msg);
+    }
+
     public void send(String emailAddress, String subject, String msg) {
 
         Properties prop = new Properties();

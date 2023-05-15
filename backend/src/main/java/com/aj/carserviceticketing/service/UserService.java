@@ -16,6 +16,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final EmailSenderService emailSenderService;
+
     public AppUser create(AppUser appUser) throws ItemAlreadyExistsException {
         if (userRepository.findByUsername(appUser.getUsername()).isPresent() || userRepository.findByEmail(appUser.getEmail()).isPresent()) {
             throw new ItemAlreadyExistsException("", "");
@@ -27,7 +29,9 @@ public class UserService {
                 .name(appUser.getName())
                 .verified(false)
                 .build();
-        return userRepository.save(userToSave);
+        AppUser savedUser = userRepository.save(userToSave);
+        emailSenderService.sendVerifyRequest(savedUser.getEmail(), savedUser.getId().toString());
+        return savedUser;
     }
 
     public List<AppUser> findAll() {
@@ -46,9 +50,12 @@ public class UserService {
         userRepository.delete(userRepository.findById(UUID.fromString(id)).get());
     }
 
-    public void verifyUser(String id) throws ItemNotFoundException {
+    public void verifyUser(String id) throws ItemNotFoundException, ItemAlreadyExistsException {
         if (userRepository.findById(UUID.fromString(id)).isPresent()) {
             AppUser appUser = userRepository.findById(UUID.fromString(id)).get();
+            if(appUser.getVerified()) {
+                throw new ItemAlreadyExistsException("", "");
+            }
             appUser.setVerified(true);
             userRepository.save(appUser);
         } else {
