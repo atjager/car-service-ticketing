@@ -30,5 +30,10 @@ public class TicketController {
         return ticketService.updateTicket(ticket);
     }
 
+    @DeleteMapping("delete")
+    private void deleteTicket(@RequestParam String id) {
+        ticketService.deleteTicket(id);
+    }
+
 
 }

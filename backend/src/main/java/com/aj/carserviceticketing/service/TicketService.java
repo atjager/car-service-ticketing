@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +26,9 @@ public class TicketService {
         Ticket ticketOld = ticketRepository.findById(ticket.getId()).get();
         ticket.setCreated(ticketOld.getCreated());
         return ticketRepository.save(ticket);
+    }
+
+    public void deleteTicket(String id) {
+        ticketRepository.delete(ticketRepository.findById(UUID.fromString(id)).get());
     }
 }

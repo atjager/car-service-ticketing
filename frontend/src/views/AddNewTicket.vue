@@ -18,13 +18,13 @@
               :rules="fieldRules"
           ></v-text-field>
 
-          <v-text-field
+          <v-textarea
               v-model="description"
               label="Description"
               required
               style="max-width: 300px"
               :rules="fieldRules"
-          ></v-text-field>
+          ></v-textarea>
 
           <v-select
               v-model="selectedCustomer"

@@ -39,7 +39,6 @@ public class UserService {
     }
 
     public AppUser update(AppUser appUser) {
-        //System.out.println(appUser);
         AppUser appUserOld = userRepository.findById(appUser.getId()).get();
         appUser.setId(appUserOld.getId());
         appUser.setCreated(appUserOld.getCreated());
