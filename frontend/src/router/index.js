@@ -44,6 +44,11 @@ const routes = [
     component: AddNewUser,
   },
   {
+    path: "/users/:id",
+    name: "Edit user",
+    component: AddNewUser,
+  },
+  {
     path: "/add-new-customer",
     name: "Add new customer",
     component: AddNewCustomer,

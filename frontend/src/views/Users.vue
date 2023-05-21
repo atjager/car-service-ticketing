@@ -26,9 +26,13 @@ export default {
   },
   methods: {
     init() {
-      if (this.$cookies.get("success")) {
+      if (this.$cookies.get("success-create")) {
         this.isSuccess = true
         this.successMsg = 'User successfully added, confirmation email sent to the given address.'
+      }
+      if (this.$cookies.get("success-update")) {
+        this.isSuccess = true
+        this.successMsg = 'User successfully updated.'
       }
     }
   },

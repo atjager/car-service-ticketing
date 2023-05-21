@@ -151,6 +151,9 @@ export default {
       } else {
         return false;
       }
+    },
+    editItem(item) {
+      this.$router.push("/users/" + item.id)
     }
   },
 }

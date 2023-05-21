@@ -42,7 +42,7 @@ public class AppUser extends BaseEntity {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "verified", nullable = false)
+    @Column(name = "verified")
     private Boolean verified;
 
 }

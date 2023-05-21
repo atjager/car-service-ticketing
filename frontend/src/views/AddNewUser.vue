@@ -3,7 +3,8 @@
     <v-alert
         type="warning"
         v-show="isWarning"
-    >{{ warningMsg }}</v-alert>
+    >{{ warningMsg }}
+    </v-alert>
     <v-row>
       <div class="col-md-6">
         <v-form
@@ -36,10 +37,10 @@
           ></v-text-field>
 
           <v-select
-            v-model="selectedRole"
-            :items="roles"
-            label="Role of the user"
-            style="max-width: 300px"
+              v-model="selectedRole"
+              :items="roles"
+              label="Role of the user"
+              style="max-width: 300px"
           ></v-select>
 
 
@@ -65,14 +66,16 @@ export default {
   data() {
     return {
       roles: ["ADMIN", "MANAGER", "MECHANIC"],
-      selectedRole : '',
+      selectedRole: '',
       username: '',
       name: '',
       email: '',
       formModel: '',
       emailRuleBool: false,
       isWarning: false,
-      warningMsg: "Username or password already exists"
+      warningMsg: "Username or password already exists",
+      update: false,
+      id: '',
     }
   },
   computed: {
@@ -105,31 +108,70 @@ export default {
     saveUser() {
       this.emailRuleBool = true
       this.$refs.form.validate()
-      if (this.validateEmail()) {
+      if (!this.update) {
 
-        if (this.name && this.email)
-          api.post('/user/create', {
-            name: this.name,
-            email: this.email,
-            role: this.selectedRole,
-            username: this.username,
-          }).then(r => {
-            if (r.status == 200) {
 
-              VueCookies.set("success", true, "5s");
-              this.$router.push("/users")
-            }
-          }, err => {
-            if (err.response.status == 409) {
-              this.userExists()
-              //this.userNameRuleBool = true;
-              setTimeout(() =>
-                  this.$refs.form.validate(), 200)
-            }
-          });
+        if (this.validateEmail()) {
+          if (this.name && this.email && this.selectedRole && this.username) {
+            api.post('/user/create', {
+              name: this.name,
+              email: this.email,
+              role: this.selectedRole,
+              username: this.username,
+            }).then(r => {
+              if (r.status == 200) {
+
+                VueCookies.set("success-create", true, "5s");
+                this.$router.push("/users")
+              }
+            }, err => {
+              if (err.response.status == 409) {
+                this.userExists()
+                //this.userNameRuleBool = true;
+                setTimeout(() =>
+                    this.$refs.form.validate(), 200)
+              }
+            });
+          }
+        }
+      } else {
+        if (this.validateEmail()) {
+          if (this.name && this.email && this.selectedRole && this.username) {
+            api.put('/user/update', {
+              id: this.id,
+              name: this.name,
+              email: this.email,
+              role: this.selectedRole,
+              username: this.username,
+            }).then(r => {
+              if (r.status == 200) {
+                VueCookies.set("success-update", true, "5s");
+                this.$router.push("/users")
+              }
+            }, err => {
+              if (err.response.status == 409) {
+                this.userExists()
+                //this.userNameRuleBool = true;
+                setTimeout(() =>
+                    this.$refs.form.validate(), 200)
+              }
+            });
+          }
+        }
       }
     },
     init() {
+      if (this.$route.params.id) {
+        api.get('user/' + this.$route.params.id)
+            .then(r => {
+              this.email = r.data.email;
+              this.name = r.data.name;
+              this.selectedRole = r.data.role;
+              this.username = r.data.username;
+              this.id = r.data.id;
+            })
+        this.update = true;
+      }
     },
 
 
