@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.domain.ticket;
 
 import com.aj.carserviceticketing.domain.BaseEntity;
+import com.aj.carserviceticketing.domain.users.AppUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,8 +28,9 @@ public class Ticket extends BaseEntity {
     @Column(name = "customerId")
     private String customerId;
 
-    @Column(name = "userId")
-    private String userId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private AppUser user;
 
     @Column(name = "name", nullable = false)
     private String name;

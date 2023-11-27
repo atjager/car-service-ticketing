@@ -2,6 +2,7 @@ package com.aj.carserviceticketing.service;
 
 import com.aj.carserviceticketing.domain.ticket.Ticket;
 import com.aj.carserviceticketing.repository.TicketRepository;
+import com.aj.carserviceticketing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,17 @@ public class TicketService {
 
     private final TicketRepository ticketRepository;
 
+    private final UserRepository userRepository;
+
+    public Ticket create(Ticket ticket, String username) {
+        System.out.println(username);
+        Ticket ticket1 = ticket;
+        ticket1.setUser(userRepository.findByUsername(username).get());
+        return ticketRepository.save(ticket1);
+    }
+
     public Ticket create(Ticket ticket) {
+        ticket.setUser(null);
         return ticketRepository.save(ticket);
     }
 

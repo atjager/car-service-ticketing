@@ -2,6 +2,7 @@ package com.aj.carserviceticketing.domain.customer;
 
 import com.aj.carserviceticketing.domain.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class Customer extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @javax.validation.constraints.Email
+    @Email
     @Column(name = "email", unique = true)
     private String email;
 

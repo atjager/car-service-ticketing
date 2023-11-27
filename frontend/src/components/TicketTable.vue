@@ -103,6 +103,7 @@ export default {
       {text: 'Description', value: 'description'},
       {text: 'Status', value: 'status'},
       {text: 'Customer', value: 'customerId'},
+      {text: 'Users', value: 'user'},
       {text: 'Created', value: 'created'},
       {text: 'Updated', value: 'updated'},
       {text: 'Actions', value: 'actions', sortable: false},
@@ -131,7 +132,15 @@ export default {
     },
     getTickets() {
       api.get("ticket/all", {}).then(r => {
-            this.tickets = r.data;
+            let tickets = r.data;
+            for (let i = 0; i < tickets.length; i++) {
+              if (tickets[i].user !== null) {
+                tickets[i].user = tickets[i].user.name;
+              } else {
+                tickets[i].user = "";
+              }
+            }
+            this.tickets = tickets;
           },
       );
 

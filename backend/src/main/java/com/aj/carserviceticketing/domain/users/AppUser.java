@@ -2,6 +2,7 @@ package com.aj.carserviceticketing.domain.users;
 
 import com.aj.carserviceticketing.domain.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,11 +39,14 @@ public class AppUser extends BaseEntity {
     @Column(name = "password")
     private String password;
 
-    @javax.validation.constraints.Email
+    @Email
     @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "verified")
     private Boolean verified;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Ticket> tickets;
 
 }

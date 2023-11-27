@@ -33,6 +33,12 @@
               style="max-width: 300px"
           ></v-select>
           <v-select
+              v-model="selectedUser"
+              :items="users"
+              label="User"
+              style="max-width: 300px"
+          ></v-select>
+          <v-select
               v-model="selectedStatus"
               :items="statuses"
               label="Status"
@@ -61,7 +67,9 @@ export default {
   data() {
     return {
       customers: [],
+      users: [],
       selectedCustomer: '',
+      selectedUser: '',
       name: '',
       description: '',
       statuses: ["CREATED", "IN_PROGRESS", "TODO", "BLOCKED", "DONE"],
@@ -86,7 +94,8 @@ export default {
       this.$refs.form.validate()
     },
     init() {
-      this.getCustomers()
+      this.getCustomers();
+      this.getUsers();
     },
     getCustomers() {
       api.get("customer/all", {}).then(r => {
@@ -96,17 +105,32 @@ export default {
           },
       );
     },
+    getUsers() {
+      api.get("user/all", {}).then(r => {
+            for (let i = 0; i < r.data.length; i++) {
+              this.users.push(r.data[i].username)
+            }
+          },
+      );
+    },
 
     saveTicket() {
       this.emailRuleBool = true
       this.$refs.form.validate()
-      if (this.name && this.description && this.selectedCustomer && this.selectedStatus)
-        api.post('/ticket/create', {
+      let route = '';
+      if (this.name && this.description && this.selectedCustomer && this.selectedStatus) {
+        if(this.selectedUser === '') {
+          route = '/ticket/create';
+          this.selectedUser = null;
+        } else {
+          route = '/ticket/create/' + this.selectedUser;
+        }
+        api.post(route, {
           name: this.name,
           description: this.description,
           status: this.selectedStatus,
           customerId: this.selectedCustomer,
-          userId: ''
+          user: null
         }).then(r => {
           if (r.status == 200) {
 
@@ -116,6 +140,7 @@ export default {
         }, err => {
           console.log("An error occured")
         });
+      }
 
     },
   }
