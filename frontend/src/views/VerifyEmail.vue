@@ -23,12 +23,12 @@ export default {
       let id = this.$route.params.id
       api.get("user/verify/" + id).then(r => {
             if (r.status === 200) {
-              this.confirmedMsg = "Email address successfully confirmed."
+              this.confirmedMsg = "Email address successfully verified."
             }
           },
           err => {
             if (err.response.status === 409) {
-              this.confirmedMsg = "This email address has been already confirmed."
+              this.confirmedMsg = "This email address has been already verified."
             } else {
               this.confirmedMsg = "Unable to confirm email address."
             }

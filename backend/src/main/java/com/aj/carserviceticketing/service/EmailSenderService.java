@@ -32,9 +32,9 @@ public class EmailSenderService {
     private String starttls;
 
     public void sendVerifyRequest(String emailAddress, String id) {
-        String msg = "Please click on this link, to confirm your email address:"
-                + "http://localhost:8081/confirm-email/" + id;
-        String subject = "Your email address must be confirmed";
+        String msg = "Please click on this link, to verify your email address:"
+                + "http://localhost:8081/verify-email/" + id;
+        String subject = "Your email address must be verified";
         send(emailAddress, subject, msg);
     }
 

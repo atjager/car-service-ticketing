@@ -8,7 +8,7 @@ import Settings from "../views/Settings";
 import AddNewUser from "../views/AddNewUser";
 import AddNewCustomer from "@/views/AddNewCustomer";
 import AddNewTicket from "@/views/AddNewTicket";
-import ConfirmEmail from "@/views/ConfirmEmail";
+import VerifyEmail from "@/views/VerifyEmail.vue";
 
 Vue.use(VueRouter);
 
@@ -59,9 +59,9 @@ const routes = [
     component: AddNewTicket,
   },
   {
-    path: "/confirm-email/:id",
-    name: "Confirm email",
-    component: ConfirmEmail,
+    path: "/verify-email/:id",
+    name: "Verify email",
+    component: VerifyEmail,
   },
 
 

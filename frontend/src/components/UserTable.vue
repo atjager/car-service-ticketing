@@ -85,6 +85,7 @@ export default {
       {text: 'Username', value: 'username'},
       {text: 'Role', value: 'role'},
       {text: 'Email', value: 'email'},
+      {text: 'Verified', value: 'verified'},
       {text: 'Created', value: 'created'},
       {text: 'Actions', value: 'actions', sortable: false},
     ],
