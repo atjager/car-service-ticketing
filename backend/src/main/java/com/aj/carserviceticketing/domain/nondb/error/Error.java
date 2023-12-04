@@ -1,4 +1,4 @@
-package com.aj.carserviceticketing.domain.error;
+package com.aj.carserviceticketing.domain.nondb.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

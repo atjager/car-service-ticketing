@@ -26,14 +26,14 @@ public class AppUser extends BaseEntity {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
+    @Column(name = "role", nullable = false, length = 32)
     @NotNull(message = "Role must be specified.")
     private Role role;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 64)
     private String name;
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true, length = 32)
     private String username;
 
     @Column(name = "password")

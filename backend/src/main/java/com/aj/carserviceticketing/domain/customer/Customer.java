@@ -24,13 +24,13 @@ public class Customer extends BaseEntity {
     @UuidGenerator
     private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 64)
     private String name;
 
     @Email
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "phone", unique = true)
+    @Column(name = "phone", unique = true, length = 16)
     private String phone;
 }

@@ -18,7 +18,6 @@ public class TicketService {
     private final UserRepository userRepository;
 
     public Ticket create(Ticket ticket, String username) {
-        System.out.println(username);
         Ticket ticket1 = ticket;
         ticket1.setUser(userRepository.findByUsername(username).get());
         return ticketRepository.save(ticket1);

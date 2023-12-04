@@ -9,7 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import com.aj.carserviceticketing.domain.error.Error;
+import com.aj.carserviceticketing.domain.nondb.error.Error;
 
 
 @RestControllerAdvice

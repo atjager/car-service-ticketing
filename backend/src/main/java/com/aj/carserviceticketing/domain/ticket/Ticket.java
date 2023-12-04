@@ -32,14 +32,14 @@ public class Ticket extends BaseEntity {
     @JoinColumn(name = "user_id")
     private AppUser user;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 64)
     private String name;
 
     @Column(name = "description", nullable = false)
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 64)
     @NotNull(message = "Ticket status must be specified.")
     private TicketStatus status;
 
