@@ -15,14 +15,14 @@ public class TicketController {
 
     private final TicketService ticketService;
 
-    @PostMapping("create")
-    private Ticket createTicketWithoutUser(@RequestBody Ticket ticket) {
-        return ticketService.create(ticket);
+    @PostMapping("create/{customer}")
+    private Ticket createTicketWithoutUser(@RequestBody Ticket ticket, @PathVariable String customer) {
+        return ticketService.create(ticket, customer);
     }
 
-    @PostMapping("create/{username}")
-    private Ticket createTicketWithUser(@RequestBody Ticket ticket, @PathVariable String username) {
-        return ticketService.create(ticket, username);
+    @PostMapping("create/{username}/{customer}")
+    private Ticket createTicketWithUser(@RequestBody Ticket ticket, @PathVariable String username, @PathVariable String customer) {
+        return ticketService.create(ticket, username, customer);
     }
 
     @GetMapping("all")

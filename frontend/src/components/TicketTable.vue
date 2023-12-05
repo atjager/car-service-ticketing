@@ -102,7 +102,7 @@ export default {
       },
       {text: 'Description', value: 'description'},
       {text: 'Status', value: 'status'},
-      {text: 'Customer', value: 'customerId'},
+      {text: 'Customer', value: 'customer'},
       {text: 'Users', value: 'user'},
       {text: 'Created', value: 'created'},
       {text: 'Updated', value: 'updated'},
@@ -138,6 +138,12 @@ export default {
                 tickets[i].user = tickets[i].user.name;
               } else {
                 tickets[i].user = "";
+              }
+
+              if (tickets[i].customer !== null) {
+                tickets[i].customer = tickets[i].customer.name;
+              } else {
+                tickets[i].customer = "";
               }
             }
             this.tickets = tickets;

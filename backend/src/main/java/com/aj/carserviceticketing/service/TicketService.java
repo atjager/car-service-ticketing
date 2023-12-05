@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.service;
 
 import com.aj.carserviceticketing.domain.ticket.Ticket;
+import com.aj.carserviceticketing.repository.CustomerRepository;
 import com.aj.carserviceticketing.repository.TicketRepository;
 import com.aj.carserviceticketing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +18,18 @@ public class TicketService {
 
     private final UserRepository userRepository;
 
-    public Ticket create(Ticket ticket, String username) {
+    private final CustomerRepository customerRepository;
+
+    public Ticket create(Ticket ticket, String username, String customer) {
         Ticket ticket1 = ticket;
         ticket1.setUser(userRepository.findByUsername(username).get());
+        ticket.setCustomer(customerRepository.findByName(customer).get());
         return ticketRepository.save(ticket1);
     }
 
-    public Ticket create(Ticket ticket) {
+    public Ticket create(Ticket ticket, String customer) {
         ticket.setUser(null);
+        ticket.setCustomer(customerRepository.findByName(customer).get());
         return ticketRepository.save(ticket);
     }
 

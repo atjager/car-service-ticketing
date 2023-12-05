@@ -1,6 +1,7 @@
 package com.aj.carserviceticketing.domain.ticket;
 
 import com.aj.carserviceticketing.domain.BaseEntity;
+import com.aj.carserviceticketing.domain.customer.Customer;
 import com.aj.carserviceticketing.domain.users.AppUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,9 @@ public class Ticket extends BaseEntity {
     @UuidGenerator
     private UUID id;
 
-    @Column(name = "customerId")
-    private String customerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

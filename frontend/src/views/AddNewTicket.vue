@@ -120,10 +120,10 @@ export default {
       let route = '';
       if (this.name && this.description && this.selectedCustomer && this.selectedStatus) {
         if(this.selectedUser === '') {
-          route = '/ticket/create';
+          route = '/ticket/create/' + this.selectedCustomer;
           this.selectedUser = null;
         } else {
-          route = '/ticket/create/' + this.selectedUser;
+          route = '/ticket/create/' + this.selectedUser + '/' + this.selectedCustomer;
         }
         api.post(route, {
           name: this.name,
